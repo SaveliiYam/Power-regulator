@@ -1,20 +1,20 @@
 #include <Segmentor.h>
-#include "Buttons.h"
+#include <MyButton.h>
 #include <GyverTimers.h>
 #include <GyverDimmer.h>
-Segmentor segment(7, 5, 9, 10, 11, 6, 8);
+Segmentor segment(8, 6, 10, 11, 12, 7, 9);
 
-Button buttonUp(A0);
-Button buttonDown(A1);
+MyButton buttonUp(5);
+MyButton buttonDown(4);
 
 const int nullDetector = 2; // детектор нуля
-const int simistr = 12;
+const int simistr = 3;
 Dimmer<simistr> dim;
 int valuePercent = 0;
 void setup() {
   attachInterrupt(0, isr, RISING);
   Timer2.enableISR();
-  segment.discharge(4, 3, 13);
+  segment.discharge(A7, A5, 13);
 }
 
 void loop() {
